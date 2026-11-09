@@ -1,0 +1,210 @@
+/* GENERAL */
+body {
+    background-color: #141414;
+    color: #eeeeee;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: #1b1b1b !important;
+    border-bottom: 1px solid #303030;
+    padding: 16px 0;
+}
+
+.navbar-brand {
+    color: #b56cff !important;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: #cccccc !important;
+    margin-left: 20px;
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    color: #b56cff !important;
+}
+
+/* DISCOVER HEADER */
+.discover-header {
+    margin: 45px 0 35px;
+}
+
+.discover-header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.discover-subtitle {
+    color: #999999;
+    font-size: 17px;
+}
+
+/* SEARCH BAR */
+.search-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 50px;
+}
+
+.search-container input {
+    flex: 1;
+    max-width: 550px;
+    background-color: #222222;
+    color: white;
+    border: 1px solid #444444;
+    border-radius: 6px;
+    padding: 13px 16px;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: #b56cff;
+    box-shadow: 0 0 0 2px rgba(181, 108, 255, 0.15);
+}
+
+.search-container button {
+    background-color: #a855f7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 25px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.search-container button:hover {
+    background-color: #873bd0;
+}
+
+/* FEATURED ALBUMS */
+.featured-title {
+    font-size: 23px;
+    font-weight: bold;
+    border-left: 4px solid #a855f7;
+    padding-left: 12px;
+    margin-bottom: 25px;
+}
+
+/* ALBUM CARDS */
+.card {
+    background-color: transparent;
+    border: none;
+    color: white;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+.card:hover {
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+.card-img-top {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 7px;
+    border: 1px solid #333333;
+}
+
+.card-body {
+    padding: 12px 2px;
+}
+
+.card-title {
+    color: #eeeeee;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card-text {
+    color: #999999;
+    font-size: 13px;
+}
+.review-section {
+    background-color: #202020;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border: 1px solid #333;
+}
+
+.review-section h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.rating-input {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 30px;
+    width: 130px;
+}
+
+.rating-input input {
+    width: 300px;
+    padding: 10px;
+    background-color: #141414;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+.review-input {
+    width: 100%;
+    background-color: #fbfbfb;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 15px;
+    color: rgb(0, 0, 0);
+    resize: vertical;
+    margin-bottom: 20px;
+}
+
+.review-input::placeholder {
+    color: #777;
+}
+
+.save-button {
+    background-color: #2d0688;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background-color: #4f3bd0;
+}
+.track-item {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.track-item input {
+    width: 80px;
+    margin-left: 15px;
+    background-color: #202020;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 6px;
+    text-align: center;
+}
