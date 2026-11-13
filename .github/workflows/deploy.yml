@@ -21,6 +21,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,12 +31,15 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: TrackRecord/package-lock.json
 
       - name: Install dependencies
         run: npm ci
+        working-directory: ./TrackRecord
 
       - name: Build
         run: npm run build
+        working-directory: ./TrackRecord
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -43,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './TrackRecord/dist'
 
       - name: Deploy
         id: deployment
