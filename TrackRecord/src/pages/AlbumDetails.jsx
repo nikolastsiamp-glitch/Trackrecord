@@ -1,47 +1,58 @@
 import {useLocation, Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 function AlbumDetails() {
+    // Get the information passed from the previous page
   const location = useLocation();
   const  album  = location.state?.album;
+  //store the album details in state and user input
   const [albumDetails, setAlbumDetails] = useState(null);
   const [rating, setRating] = useState('');
   const [review, setReview] = useState('');
   const [loading, setLoading] = useState(true);
   const [trackRatings, setTrackRatings] = useState({});
-  useEffect(() => {
-    async function fetchAlbumDetails() {
+  useEffect(() => {//runs when the selected album changes, 
+    //fetches the album details and sets the state for rating, review, 
+    //and track ratings if the album is already saved in local storage
+
+    async function fetchAlbumDetails() {//fetches the album details from the iTunes API
       const response = await fetch(`https://itunes.apple.com/lookup?id=${album.collectionId}&entity=song`);
       const data = await response.json();
+      //set the album details in state
       setAlbumDetails(data.results);
     }
     if (album) {
+        //get the saved albums from local storage
         const savedAlbums = JSON.parse(localStorage.getItem('myDiary')) || [];
+        //check if the album is already saved in local storage
         const existingAlbum = savedAlbums.find(
             a => a.collectionId === album.collectionId
         );
         if (existingAlbum) {
+            //loads the existing rating, review, and track ratings from local storage if the album is already saved
             setRating(existingAlbum.rating);
             setReview(existingAlbum.review);
             setTrackRatings(existingAlbum.trackRatings || {});
-        }else {
+        }else {//reset the rating, review, and track ratings if the album is not saved
             setRating('');
             setReview('');
             setTrackRatings({});
-        }
+        }//fetch the album details from the iTunes API
       fetchAlbumDetails();
     }
   }, [album]);
+  //function to save the album details, rating, review, and track ratings to local storage
   function saveToDiary() {
+    //get the saved albums from local storage
     const savedAlbums = JSON.parse(localStorage.getItem('myDiary')) || [];
-
+    //check if the album is already saved in local storage
     const existingAlbum = savedAlbums.find(
         a => a.collectionId === album.collectionId
     );
-
+    //remove the existing album from the saved albums array if it exists, and add the updated album details, rating, review, and track ratings to the saved albums array
     const updatedAlbum = savedAlbums.filter(
         a => a.collectionId !== album.collectionId
     );
-
+    //add the updated album details, rating, review, and track ratings to the saved albums array
     updatedAlbum.push({
         collectionId: album.collectionId,
         title: album.collectionName,
@@ -51,14 +62,16 @@ function AlbumDetails() {
         review: review,
         trackRatings: trackRatings,
         dateAdded: existingAlbum
+        //if the album is already saved in local storage, keep the existing dateAdded value, otherwise set it to the current date and time
             ? existingAlbum.dateAdded
             : new Date().toISOString()
     });
-
+    //save the updated albums array to local storage
     localStorage.setItem('myDiary', JSON.stringify(updatedAlbum));
 
     alert('Album saved to My Diary!');
   }
+  //if no album is selected, display a message to the user
 
   if (!album) {
     return(
@@ -66,7 +79,7 @@ function AlbumDetails() {
     )
   }
 
-  return (
+  return (//display the album details, rating, review, and track ratings to the user
     <div className="container mt-4">
         <Link to="/" className="btn btn-secondary mb-3">Back to Discover</Link>
         <div className="mt-4">
